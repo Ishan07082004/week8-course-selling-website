@@ -1,6 +1,5 @@
 const { Schema, default: mongoose, model } = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
-mongoose.connect("mongodb+srv://ishanv002:IShanMongoDB@cluster0.7wq9k.mongodb.net/coursera-app")
 
 const userSchema = new Schema({
   email: { type: String, unique: true },
