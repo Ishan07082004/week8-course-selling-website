@@ -1,10 +1,24 @@
 const { Router } = require("express");
+const { userModel } = require("../database");
 
 const userRouter = Router();
 
-userRouter.post("/signup", function(req, res) {
+userRouter.post("/signup", async function(req, res) {
+  const { email, password, firstName, lastName } = req.body;
+  // 3 additional steps to be done
+  // adding hashing for the password to be safe
+  // zod validation
+  // put userModel in try-catch block
+
+  await userModel.create ({
+    email: email,
+    password: password,
+    firstName: firstName,
+    lastName: lastName
+  })
+
   res.json({
-    message: "signup endpoint"
+    message: "signup succeeded"
   })
 })
 
