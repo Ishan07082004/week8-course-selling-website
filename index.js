@@ -10,7 +10,7 @@ app.use("/api/v1/admin", adminRouter);
 app.use("/api/v1/course", courseRouter);
 
 async function main() {
-  await mongoose.connect("mongodb+srv://ishanv002:IShanMongoDB@cluster0.7wq9k.mongodb.net/coursera-app")
+  await mongoose.connect("mongodb+srv://ishanv002:IShanMongoDB@cluster0.7wq9k.mongodb.net/ishan-course-selling-app")
   console.log("connected to database: ");
   app.listen(3000);
 }

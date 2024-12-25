@@ -1,7 +1,9 @@
 const { Router } = require("express");
 const adminRouter = Router(); 
 const { adminModel } = require("../database");
+// bcrypt zod jsonwebtoken
 
+// here we are making all the endpoints for the admin router
 adminRouter.post("/signup", function(req, res) {
   res.json({
     message: "signup endpoint"
@@ -14,19 +16,19 @@ adminRouter.post("/signin", function(req, res) {
   })
 })
 
-adminRouter.post("/course", function(req, res) {
+adminRouter.post("/", function(req, res) {
   res.json({
     message: "signin endpoint"
   })
 })
 
-adminRouter.put("/course", function(req, res) {
+adminRouter.put("/", function(req, res) {
   res.json({
     message: "signin endpoint"
   })
 })
 
-adminRouter.get("/course/bulk", function(req, res) {
+adminRouter.get("/bulk", function(req, res) {
   res.json({
     message: "signin endpoint"
   })
