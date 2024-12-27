@@ -2,7 +2,7 @@ const { Router } = require("express");
 const { userModel } = require("../database");
 const jwt = require("jsonwebtoken");
 const userRouter = Router();
-const JWT_PASSWORD = "aladl123";
+const JWT_USER_PASSWORD = "aladl123";
 
 userRouter.post("/signup", async function(req, res) {
   const { email, password, firstName, lastName } = req.body;
@@ -25,7 +25,7 @@ userRouter.post("/signup", async function(req, res) {
 
 userRouter.post("/signin", async function(req, res) {
   const { email, password } = req.body;
-  const user = await userModel.find({
+  const user = await userModel.findOne({
     email: email,
     password: password
   });
@@ -33,12 +33,17 @@ userRouter.post("/signin", async function(req, res) {
   if(user) {
     const token = jwt.sign({
       id: user._id,
-    }, JWT_PASSWORD);
-  }
+    }, JWT_USER_PASSWORD);
 
-  res.json({
-    message: "signin endpoint"
-  })
+    res.json({
+      token: token
+    })
+
+  }else {
+    res.status(403).json({
+      message: "Incorrect credentials"
+    })
+  }
 })
 
 userRouter.get("/purchases", function(req, res) {
