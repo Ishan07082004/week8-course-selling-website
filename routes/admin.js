@@ -50,13 +50,7 @@ adminRouter.post("/signin", async function(req, res) {
   }
 })
 
-adminRouter.post("/", function(req, res) {
-  res.json({
-    message: "signin endpoint"
-  })
-})
-
-adminRouter.put("/", adminMiddleware, async function(req, res) {
+adminRouter.post("/course", adminMiddleware, async function(req, res) {
   const adminId = req.userId;
 
   const { title, description, price, imageUrl } = req.body;
@@ -75,7 +69,11 @@ adminRouter.put("/", adminMiddleware, async function(req, res) {
   })
 })
 
-adminRouter.get("/bulk", function(req, res) {
+adminRouter.put("/course", adminMiddleware, async function(req, res) {
+  
+})
+
+adminRouter.get("/course/bulk", function(req, res) {
   res.json({
     message: "signin endpoint"
   })
