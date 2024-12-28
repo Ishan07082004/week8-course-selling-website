@@ -1,5 +1,5 @@
 require("dotenv").config()
-// console.log(process.env.MONGO_URL)
+console.log(process.env.MONGO_URL)
 const express = require("express");
 const app = express();
 const { Schema, default: mongoose, model } = require("mongoose");
