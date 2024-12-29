@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const adminRouter = Router(); 
-const { adminModel } = require("../database");
+const { adminModel, courseModel } = require("../database");
 // bcrypt zod jsonwebtoken
 const jwt = require("jsonwebtoken");
 const { JWT_ADMIN_PASSWORD } = require("../config");
@@ -72,7 +72,7 @@ adminRouter.post("/course", adminMiddleware, async function(req, res) {
 adminRouter.put("/course", adminMiddleware, async function(req, res) {
   const adminId = req.userId;
 
-  const { title, description, price, imageUrl } = req.body;
+  const { title, description, price, imageUrl, courseId } = req.body;
 
   const course = await courseModel.updateOne({
     _id: courseId,
@@ -92,8 +92,8 @@ adminRouter.put("/course", adminMiddleware, async function(req, res) {
 
 adminRouter.get("/course/bulk", adminMiddleware, async function(req, res) {
   const adminId = req.userId;
-
-  const course = await courseModel.find({
+  
+  const courses = await courseModel.find({
     creatorId: adminId
   });
 
