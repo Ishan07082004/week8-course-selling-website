@@ -5,7 +5,6 @@ const { adminModel, courseModel } = require("../database");
 const jwt = require("jsonwebtoken");
 const { JWT_ADMIN_PASSWORD } = require("../config");
 const { adminMiddleware } = require("../middlewares/admin");
-const course = require("./course");
 
 // here we are making all the endpoints for the admin router
 adminRouter.post("/signup", async function(req, res) {
@@ -106,3 +105,4 @@ adminRouter.get("/course/bulk", adminMiddleware, async function(req, res) {
 module.exports = {
   adminRouter: adminRouter
 }
+
